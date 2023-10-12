@@ -1,9 +1,6 @@
 <?php
     function getAllPro(){
         $sql= "SELECT * FROM `product`";
-        // if($idCate > 0 ){
-        //     $sql .= " and idCate ='".$idCate."'";
-        // }
         $listAll = pdo_query($sql);
         return $listAll;
     }
@@ -12,6 +9,18 @@
         $sql = "SELECT * FROM `product` WHERE idProduct = " . $id;
         $listOne = pdo_query_one($sql);
         return $listOne;
+    }
+
+    function getRelated($id,$idCate){
+        $sql = "SELECT * FROM `product` WHERE  `idCate` =".$idCate." AND  `idProduct` <> " . $id;
+        $listAll = pdo_query($sql);
+        return $listAll;
+    }
+
+    function getProByCate($idCate){
+        $sql = "SELECT * FROM `product` WHERE idCate IN ($idCate)";
+        $listAll = pdo_query($sql);
+        return $listAll;
     }
 
     function addNewPro($name,$price,$image,$quantity,$description,$idCate){

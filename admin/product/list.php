@@ -40,7 +40,9 @@
                                 <td>
                                     <?= $price ?>
                                 </td>
-                                <td><img src="../images/<?= $image ?>" width="100" alt=""></td>
+                                <td>
+                                    <img src="../images/<?= $image ?>" width="100" alt="">
+                                </td>
                                 <td>
                                     <?php 
                                         foreach($listAllCate as $dm){

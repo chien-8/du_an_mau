@@ -1,5 +1,5 @@
 <?php 
-    if(isset($product)){
+    if(is_array($product)){
         extract($product);
     }
 ?>

@@ -87,133 +87,38 @@
                     <div class="header-control-inner">
                         <div class="meta-dreaming">
                             <div class="menu-item block-user block-dreaming lynessa-dropdown">
-                                <?php if (isset($_SESSION['user'])) {
-                                    extract($_SESSION['user']);
-                                    if ($role == 3) {
-                                ?>
-                                        <div class="menu-item block-user block-dreaming lynessa-dropdown">
-                                            <a class="block-link" href="index.php?act=account">
-                                                <span class="pe-7s-user"></span>
-                                            </a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
-                                                    <a href="./admin">Admin</a>
-                                                </li>
-                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
-                                                    <a href="?act=account">Account</a>
-                                                </li>
-                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
-                                                    <a href="?act=logout">Logout</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <div class="menu-item block-user block-dreaming lynessa-dropdown">
-                                            <a class="block-link" href="index.php?act=account">
-                                                <span class="pe-7s-user"></span>
-                                            </a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
-                                                    <a href="?act=account">Account</a>
-                                                </li>
-                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
-                                                    <a href="?act=logout">Logout</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                <!-- login -->
+                                <div class="menu-item block-user block-dreaming lynessa-dropdown">
+                                    <a class="block-link" href="index.php?act=login_resign">
+                                        <span class="pe-7s-user"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
 
-                                    <?php
-                                    }
-                                    ?>
+                                            <a href="?act=login">Login or Resign</a>
 
-                                <?php } else { ?>
-                                    <div class="menu-item block-user block-dreaming lynessa-dropdown">
-                                        <a class="block-link" href="index.php?act=login_resign">
-                                            <span class="pe-7s-user"></span>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- end login ---->
 
-                                                <a href="?act=login_resign">Login or Resign</a>
-
-                                            </li>
-                                        </ul>
-                                    </div>
-                                <?php } ?>
                             </div>
                             <div class="block-minicart block-dreaming lynessa-mini-cart lynessa-dropdown" id="demo" onclick="click()">
                                 <div class="shopcart-dropdown block-cart-link"  data-lynessa="lynessa-dropdown" >
                                     <a class="block-link link-dropdown" href="" >
                                         <span class="pe-7s-shopbag"></span>
-                                        <?php
-
-                                        if (isset($_SESSION['mycart'])) {
-                                            $stt = 0;
-                                            foreach ($_SESSION['mycart'] as $cart) {
-                                                $stt++;
-                                        ?><span class="count"><?= $stt ?></span>
-
-
-                                        <?php
-
-                                            }
-                                        }
-                                        ?>
-
                                     </a>
                                 </div>
 
                                 <div class="widget lynessa widget_shopping_cart">
                                     <div class="widget_shopping_cart_content">
-
-
-                                        <h3 class="minicart-title">Your Cart <?php
-                                                                                if (isset($_SESSION['mycart'])) {
-                                                                                    $stt = 0;
-                                                                                    foreach ($_SESSION['mycart'] as $cart) {
-                                                                                        $stt++;
-                                                                                ?><span class="minicart-number-items"><?= $stt ?></span>
-                                            <?php
-                                                                                    }
-                                                                                }
-                                            ?>
+                                        <h3 class="minicart-title">Your Cart 
                                         </h3>
                                         <ul class="lynessa-mini-cart cart_list product_list_widget">
-                                            <?php
-                                            if (isset($_SESSION['mycart'])) {
-                                                $stt = 0;
-                                                foreach ($_SESSION['mycart'] as $cart) {
-                                            ?>
-                                                    <li class="lynessa-mini-cart-item mini_cart_item">
-
-                                                        <a href="?act=delete_cart&idCart=<?= $stt++ ?>" class="remove remove_from_cart_button">×</a>
-                                                        <a href="#">
-                                                            <img src="./image/<?= $cart[2] ?>" class="attachment-lynessa_thumbnail size-lynessa_thumbnail" alt="img" width="600" height="778"><?= $cart[1] ?>;
-                                                        </a>
-                                                        <span class="quantity"><?= $cart[4] ?> × <span class="lynessa-Price-amount amount"><span class="lynessa-Price-currencySymbol">$</span><?= $cart[3]*$cart[4] ?></span></span>
-                                                    </li>
-                                            <?php
-                                                }
-                                            }
-                                            ?>
+                                            
                                         </ul>
-                                        <p class="lynessa-mini-cart__total total"><strong>Subtotal:</strong>
-                                            <?php
-                                            $tong = 0;
-                                            if (isset($_SESSION['mycart'])) {
-                                            ;
-
-                                                foreach ($_SESSION['mycart'] as $cart) {
-                                                    $tong += $cart[3]*$cart[4] ;
-                                                }
-                                                echo '
-                                                <span class="lynessa-Price-amount amount"><span
-                                            class="lynessa-Price-currencySymbol">$</span>' . $tong . '</span>';
-                                            }
-                                            ?>
-                                        </p>
+                                        
                                         <p class="lynessa-mini-cart__buttons buttons">
                                             <a href="?act=cart" class="button lynessa-forward">Viewcart</a>
                                             <a href="?act=checkout" class="button checkout lynessa-forward">Checkout</a>
@@ -236,27 +141,21 @@
                             <div class="box-header-nav menu-nocenter">
                                 <ul id="menu-primary-menu" class="clone-main-menu lynessa-clone-mobile-menu lynessa-nav main-menu">
                                     <li id="menu-item-230" class="menu-item menu-item-type-post_type menu-item-object-megamenu menu-item-230 parent parent-megamenu item-megamenu menu-item-has-children">
-                                        <a class="lynessa-menu-item-title" title="Home" href="?act=home">Home</a>
-                                        <!-- <span class="toggle-submenu"></span>
-                                    <div class="submenu megamenu megamenu-home">
-                                        <h5 class="az_custom_heading">
-                                                        <a href="index.html">Home 01</a>
-                                                    </h5>
-                                    </div> -->
+                                        <a class="lynessa-menu-item-title" title="Home" href="index.php">Home</a>
                                     </li>
                                     <li id="menu-item-228" class="menu-item menu-item-type-post_type menu-item-object-megamenu menu-item-228 parent parent-megamenu item-megamenu menu-item-has-children">
-                                        <a class="lynessa-menu-item-title" title="Shop" href="?act=shop">Shop</a>
+                                        <a class="lynessa-menu-item-title" title="Shop" href="index.php?act=shop">Shop</a>
 
                                     </li>
                                     <li id="menu-item-229" class="menu-item menu-item-type-post_type menu-item-object-megamenu menu-item-229 parent parent-megamenu item-megamenu menu-item-has-children">
                                         <a class="lynessa-menu-item-title" title="Elements" href="#">Elements</a>
                                     </li>
                                     <li id="menu-item-996" class="menu-item menu-item-type-post_type menu-item-object-megamenu menu-item-996 parent parent-megamenu item-megamenu menu-item-has-children">
-                                        <a class="lynessa-menu-item-title" title="Blog" href="blog.php">Blog</a>
+                                        <a class="lynessa-menu-item-title" title="Blog" href="#">Blog</a>
 
                                     </li>
                                     <li id="menu-item-237" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-237 parent">
-                                        <a class="lynessa-menu-item-title" title="Pages" href="contact.php">Contact</a>
+                                        <a class="lynessa-menu-item-title" title="Pages" href="#">Contact</a>
                                     </li>
                                 </ul>
                             </div>
