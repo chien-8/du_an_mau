@@ -88,18 +88,64 @@
                         <div class="meta-dreaming">
                             <div class="menu-item block-user block-dreaming lynessa-dropdown">
                                 <!-- login -->
-                                <div class="menu-item block-user block-dreaming lynessa-dropdown">
-                                    <a class="block-link" href="index.php?act=login_resign">
-                                        <span class="pe-7s-user"></span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
+                                <?php if (isset($_SESSION['user'])) {
+                                    extract($_SESSION['user']);
+                                    if ($role == 1) {
+                                ?>
+                                        <span><?=$name?></span>
+                                        <div class="menu-item block-user block-dreaming lynessa-dropdown">
+                                            <a class="block-link" href="index.php?act=account">
 
-                                            <a href="?act=login">Login or Resign</a>
+                                                <span class="pe-7s-user"></span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
+                                                    <a href="./admin">Admin</a>
+                                                </li>
+                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
+                                                    <a href="index.php?act=account">Account</a>
+                                                </li>
+                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
+                                                    <a href="index.php?act=logout">Logout</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <span><?=$name?></span>
+                                        <div class="menu-item block-user block-dreaming lynessa-dropdown">
+                                            <a class="block-link" href="index.php?act=account">
+                                                <span class="pe-7s-user"></span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
+                                                    <a href="index.php?act=account">Account</a>
+                                                </li>
+                                                <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
+                                                    <a href="index.php?act=logout">Logout</a>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                        </li>
-                                    </ul>
-                                </div>
+                                    <?php
+                                    }
+                                    ?>
+
+                                <?php } else { ?>
+                                    <div class="menu-item block-user block-dreaming lynessa-dropdown">
+                                        <a class="block-link" href="index.php?act=login">
+                                            <span class="pe-7s-user"></span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li class="menu-item lynessa-MyAccount-navigation-link lynessa-MyAccount-navigation-link--customer-logout">
+
+                                                <a href="index.php?act=login">Login or register</a>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <?php } ?>
                                 
                                 <!-- end login ---->
 

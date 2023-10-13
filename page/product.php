@@ -110,7 +110,7 @@
                             <button type="submit" value="Search">Search</button>
                         </form>
                     </div>
-                    <div id="lynessa_price_filter-2" class="widget lynessa widget_price_filter">
+                    <!-- <div id="lynessa_price_filter-2" class="widget lynessa widget_price_filter">
                         <h2 class="widgettitle">Filter By Price<span class="arrow"></span></h2>
                         <form method="post" action="index.php?act=shop">
                             <div class="price_slider_wrapper">
@@ -124,44 +124,35 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div> -->
                     <div id="lynessa_product_categories-3" class="widget lynessa widget_product_categories">
                         <h2 class="widgettitle">Product categories<span class="arrow"></span></h2>
                         <ul class="product-categories">
+                            <!-- <p id="groupId" name="gruopId"></p> -->
+                            <form method="post" action="index.php?act=shopfilter">
                             <?php
                             foreach ($listAllCate as $category) : 
                                 extract($category);
                             ?>
                                 <li class="cat-item cat-item-22">
                                     <label>
-                                        <input type="checkbox" name="cate" class="checkbox" value="<?= $idCategory?>">
+                                        <input type="checkbox" name="cate[]" class="checkbox"  value="<?= $idCategory?>">
                                         <span>
                                             <a href="index.php?act=shop&idCate=<?=$idCate?>" ><?= $name ?></a>
                                         </span>
                                     </label>
                                 </li>
                             <?php endforeach ?>
+                            <button type="submit" name="filter" class="btn">Filter </button>
+                            </form>
                         </ul>
                     </div>
                 </div>
                 <!-- .widget-area -->
+
             </div>
         </div>
     </div>
 
 </div>
-<!-- <script>
-    var checkbox = document.querySelectorAll('.checkbox');
-    const listArray = []
-    for(var check of checkbox){
-        check.addEventListener('click',function(){
-            if(this.checked == true){
-                listArray.push(this.value)
-            }else{
-                listArray = listArray.filter((e)=> e != this.value);
-            }
-        })
-    }
-    
 
-</script> -->
