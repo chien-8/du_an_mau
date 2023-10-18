@@ -111,7 +111,10 @@
                         break;
                     //account
                     case 'user':
-                        $listuser = getAllUser();
+                        if(isset($_SESSION['user'])){
+                            extract($_SESSION['user']);
+                            $listuser = getAllUser($idUser);
+                        }
                         include "account/list.php";
                         break;
                     case 'add_user':
@@ -129,6 +132,10 @@
                     case 'comment':
                         include "comment/list.php";
                         break;
+                    case 'logout':
+                        session_destroy();
+                        echo ("<script>location.href ='index.php'</script>");
+                        break;
                     default:
                         include "home.php";
                         break;
@@ -140,4 +147,32 @@
         }
     }else{
         include "login.php";
+        if(isset($_GET['act'])){
+            $act = $_GET['act'];
+            switch ($act) {
+                case 'login':
+                    if(isset($_POST['submit'])){
+                        $email =$_POST['email'];
+                        $password =$_POST['password'];
+                        $login = checkUser($email,$password);
+                        if(is_array($login)){
+                            $_SESSION['user'] = $login;
+                            $thongbao = 'đăng nhập thành công';
+                            echo ("<script>location.href ='index.php?act=product'</script>");
+                        }else{
+                            $thongbao = 'tài khảon k tồn tại';
+                        }
+                    }
+                    include "home.php";
+                    break;
+                
+                default:
+                    include "login.php";
+                    break;
+            }
+        }
+            
+        
+        
+        
     }

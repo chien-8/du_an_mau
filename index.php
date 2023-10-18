@@ -5,7 +5,7 @@
     include './module/product.php';
     include './module/category.php';
     include './module/user.php';
-
+    include './module/comment.php';
 
     if(isset($_GET['act'])){
         $act = $_GET['act'];
@@ -73,7 +73,7 @@
                     $product= getOnePro($_GET['id']);
                     extract($product);
                     $related = getRelated($_GET['id'],$idCate);
-                }
+                }             
                 include "page/detailProduct.php";
                 break;
             default:

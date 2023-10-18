@@ -132,20 +132,26 @@ if (is_array($product)) {
                         <div class="lynessa-tabs lynessa-tabs-wrapper">
                             <ul class="tabs dreaming-tabs" role="tablist">
                                 <li class="additional_information_tab" id="tab-title-additional_information" role="tab" aria-controls="tab-additional_information">
-                                    <a href="#tab-additional_information">Additional information</a>
+                                    <a href="#tab-reviews">Additional information</a>
                                 </li>
-                                <li class="reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
-                                    <a href="#tab-reviews">Reviews </a>
-                                </li>
+                                <!-- <li class="reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
+                                    <a href="">Reviews </a>
+                                </li> -->
                             </ul>
                             <div class="lynessa-Tabs-panel lynessa-Tabs-panel--additional_information panel entry-content lynessa-tab" id="tab-reviews">
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#comment").load("./page/comment.php", {
+                                            id: <?=$idProduct?>,
+                                        });
+                                    });
+                                </script>
                                 <div class="comment" id="comment">
-                                    <form method="post">
-                                        <textarea name="content_cmt" class="area-cmt" cols="60" rows="3" placeholder="Nhập bình luận của bạn" required></textarea> <br>
-                                        <input type="hidden" name="idpro" value="<?= $idProduct ?>">
-                                        <input type="submit" name="btn_cmt" class="ip-cmt" value="Gửi">
-                                    </form>
+                                    <!-- <iframe src="page/comment.php?id=<?=$idProduct ?>" width="100%"></iframe> -->
                                 </div>
+                                
+
                             </div>
                         </div>
                     </div>
@@ -158,7 +164,11 @@ if (is_array($product)) {
                         </h2>
                     </div>
 
-
+                    <?php 
+                                    if(isset($thongbao)){
+                                        echo $thongbao;
+                                    }
+                                ?>
 
                     <div class="owl-slick owl-products equal-container better-height" data-slick="{&quot;arrows&quot;:false,&quot;slidesMargin&quot;:30,&quot;dots&quot;:true,&quot;infinite&quot;:false,&quot;slidesToShow&quot;:4}" data-responsive="[{&quot;breakpoint&quot;:480,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:768,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:992,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1500,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;30&quot;}}]">
                         <!-- sản phẩm cùng loại -->
