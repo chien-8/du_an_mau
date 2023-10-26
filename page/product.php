@@ -75,8 +75,14 @@
                                         <a href="#"><?= $namePro ?></a>
                                     </h3>  
                                     <div class="rating-wapper nostar">
-                                        <div class="star-rating"><span style="width:0%">Rated <strong class="rating">0</strong> out of 5</span></div>
-                                        <span class="review">(0)</span>
+                                        <span ><?php 
+                                        foreach($listAllCate as $dm){
+                                            extract($dm);
+                                            if($idCate == $idCategory){
+                                                echo $name;
+                                            }  
+                                        } 
+                                    ?></span>
                                     </div>
                                     <span class="price"><span class="lynessa-Price-amount amount"><span class="lynessa-Price-currencySymbol"> <span class="lynessa-Price-amount amount"><span class="lynessa-Price-currencySymbol">$</span><?=  $price ?></span></span>
                                     <div class="lynessa-product-details__short-description">
@@ -110,21 +116,7 @@
                             <button type="submit" value="Search">Search</button>
                         </form>
                     </div>
-                    <!-- <div id="lynessa_price_filter-2" class="widget lynessa widget_price_filter">
-                        <h2 class="widgettitle">Filter By Price<span class="arrow"></span></h2>
-                        <form method="post" action="index.php?act=shop">
-                            <div class="price_slider_wrapper">
-                                <div data-label-reasult="Range:" data-min="0" data-max="1000" data-unit="$" class="price_slider" data-value-min="50" data-value-max="500">
-                                </div>
-                                <div class="price_slider_amount">
-                                    <button type="submit" id="filter" class="button">Filter</button>
-                                    <div class="price_label">
-                                        Price: <span class="from">$50</span> — <span class="to">$200</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div> -->
+
                     <div id="lynessa_product_categories-3" class="widget lynessa widget_product_categories">
                         <h2 class="widgettitle">Product categories<span class="arrow"></span></h2>
                         <ul class="product-categories">
@@ -138,7 +130,7 @@
                                     <label>
                                         <input type="checkbox" name="cate[]" class="checkbox"  value="<?= $idCategory?>">
                                         <span>
-                                            <a href="index.php?act=shop&idCate=<?=$idCate?>" ><?= $name ?></a>
+                                            <?= $name ?>
                                         </span>
                                     </label>
                                 </li>

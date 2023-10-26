@@ -8,10 +8,10 @@
         </div>
         <div class="card-body">
             <div class="">
-                    <form action="index.php?act=add_category" method="post" class="row g-3" name="myForm" >
+                    <form action="index.php?act=add_category" method="post" class="row g-3" name="myForm" onsubmit="return validate()">
                         <div class="col-md-12">
                             <label for="inputEmail4" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="inputEmail4" name="nameCate">
+                            <input type="text" class="form-control" id="category" name="nameCate">
                             <span style="color:red" id="error"> </span>
                         </div>
                         <div class="col-md-12">
@@ -23,3 +23,14 @@
     </div>
 
 </div>
+<script>
+    function validate(){
+        var category = document.getElementById("category");
+        if(category.value.length == 0){
+            error.innerHTML = "Không được để trống!";
+            return false;
+        }else{
+            error1.innerHTML = "";
+        }
+    }
+</script>

@@ -3,7 +3,9 @@
     include "../module/pdo.php";
     include "../module/category.php";
     include "../module/product.php";
+    include "../module/comment.php";
     include "../module/user.php";
+    include "../module/statistic.php";
     
     if(isset($_SESSION['user'])){
         extract($_SESSION['user']);
@@ -21,6 +23,7 @@
                         if(isset($_POST['addNew'])){
                             $nameCate = $_POST['nameCate'];
                             addNewCate($nameCate);
+                            echo ("<script>location.href ='index.php?act=category'</script>");
                         }
                         include "category/add.php";
                         break;
@@ -130,17 +133,32 @@
                         break;
                     //comment
                     case 'comment':
+                        $listComment = getAllComment();
+                        $listUser = getAllUser(0);
+                        $listPro = getAllPro();
                         include "comment/list.php";
                         break;
+                    case 'delete_comment':
+                        if(isset($_GET['id']) && $_GET['id'] > 0){
+                            deleteComment($_GET['id']);
+                        }
+                        $listComment = getAllComment();
+                        $listUser = getAllUser(0);
+                        $listPro = getAllPro();
+                        include "comment/list.php";
+                        break;
+                    //statistic
                     case 'logout':
                         session_destroy();
                         echo ("<script>location.href ='index.php'</script>");
                         break;
                     default:
+                        $listTKe= statisticCate();
                         include "home.php";
                         break;
                 }
             }else {
+                $listTKe= statisticCate();
                 include "home.php";
             }
             include "footer.php";
@@ -158,12 +176,12 @@
                         if(is_array($login)){
                             $_SESSION['user'] = $login;
                             $thongbao = 'đăng nhập thành công';
-                            echo ("<script>location.href ='index.php?act=product'</script>");
+                            echo ("<script>location.href ='index.php'</script>");
                         }else{
                             $thongbao = 'tài khảon k tồn tại';
                         }
                     }
-                    include "home.php";
+                    include "";
                     break;
                 
                 default:

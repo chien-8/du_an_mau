@@ -148,8 +148,14 @@
                                             <?= $price ?>
                                         </span></span>
                                     <div class="rating-wapper nostar">
-                                        <div class="star-rating"><span style="width:0%">Rated <strong class="rating">0</strong> out of 5</span></div>
-                                        <span class="review">(0)</span>
+                                        <span><?php 
+                                                    foreach($listAllCate as $dm){
+                                                        extract($dm);
+                                                        if($idCate == $idCategory){
+                                                            echo $name;
+                                                        }  
+                                                    } ?>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

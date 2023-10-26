@@ -63,7 +63,7 @@
                 if(isset($_POST['filter'])){
                     $data = $_POST['cate'];
                     $allData= implode(",",$data);
-                    $listPro=getProByCate($allData);
+                    $listPro=getProByCate($allData);  
                 }
                 $listAllCate = getAllCate();
                 include "page/product.php";
@@ -72,6 +72,7 @@
                 if(isset($_GET['id']) && $_GET['id'] > 0 ){
                     $product= getOnePro($_GET['id']);
                     extract($product);
+                    $cate = getOneCate($idCate);
                     $related = getRelated($_GET['id'],$idCate);
                 }             
                 include "page/detailProduct.php";

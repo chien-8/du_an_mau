@@ -1,6 +1,6 @@
 <?php 
     function addComment($content,$dateComment,$idPro,$idUser,$nameUser){
-        $sql = "INSERT INTO `comment` (`content`,`dateComment`,`idProduct`,`idUser`,`nameUser`) VALUES ('$content','$dateComment','$idPro','$idUser','$nameUser')";
+        $sql = "INSERT INTO `comment` (`content`,`dateComment`,`idPro`,`userComment`,`nameUser`) VALUES ('$content','$dateComment','$idPro','$idUser','$nameUser')";
         pdo_execute($sql);
     }
 
@@ -16,7 +16,7 @@
     }
      
     function getAllCmtByPro($idPro){
-        $sql = "SELECT * FROM comment WHERE idProduct = '$idPro' ORDER BY idComment desc limit 0,8";
+        $sql = "SELECT * FROM comment WHERE idPro = '$idPro' ORDER BY idComment desc limit 0,8";
         $listAll= pdo_query($sql);
         return $listAll;
     }

@@ -47,9 +47,9 @@
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <a href="#" class="btn btn-primary btn-user btn-block">
-                                            <button type="submit" name="submit">Login</button>
-                                        </a>
+                                        
+                                            <button class="btn btn-primary btn-user btn-block" type="submit" name="submit">Login</button>
+                                        
                                         <hr>
                                         <a href="#" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google

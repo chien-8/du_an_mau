@@ -1,7 +1,9 @@
 <?php
 
     function getAllUser($id){
-        $sql= "SELECT * FROM `account` WHERE `idUser` <>".$id;
+        $sql= "SELECT * FROM `account`";
+        if($id > 0)
+        $sql .= " WHERE `idUser` <>".$id;
         $listAll = pdo_query($sql);
         return $listAll;
     }

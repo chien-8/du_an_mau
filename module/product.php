@@ -18,7 +18,12 @@
     }
 
     function getProByCate($idCate){
-        $sql = "SELECT * FROM `product` WHERE idCate IN ($idCate)";
+        if($idCate != ""){
+            $sql = "SELECT * FROM `product` WHERE idCate IN ($idCate)";
+        }else{
+            $sql = "SELECT * FROM `product`";
+        }
+        
         $listAll = pdo_query($sql);
         return $listAll;
     }

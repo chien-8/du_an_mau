@@ -42,7 +42,13 @@ if (is_array($product)) {
                                     <h1 class="product_title entry-title"><?= $namePro ?></h1>
                                     <p class="price"><span class="lynessa-Price-amount amount"><span class="lynessa-Price-currencySymbol">$</span><?= $price ?> </span></p>
                                     <p class="stock in-stock">
-                                        Availability: <span> In stock</span>
+                                        Category: <span>
+                                                    <?php 
+                                                        if(is_array($cate)){
+                                                                extract($cate);
+                                                                echo $name; 
+                                                            } ?>
+                                                  </span>
                                     </p>
                                     <div class="lynessa-product-details__short-description">
                                         <p><?= $description ?></p>
